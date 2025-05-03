@@ -1,6 +1,14 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --green: #059669;
+  --green_dark: #064e3b;
+  --green_light: #aff4c6;
+  --green_light2: #ecfdf5;
+  --white: #ffffff;
+  --grey: #f2eff3;
+  --grey2: #8e8c99;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,7 +34,7 @@ body {
 
 * {
   box-sizing: border-box;
-  padding: 0;
+  /* padding: 0; */
   margin: 0;
 }
 
@@ -38,5 +46,276 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+section {
+  color: #064E3B;
+  font-family: Open Sans;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+form {
+  display: flex;
+  gap: 32px;
+}
+
+.inner_layout {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  gap: 42px;
+
+  @media only screen and (min-width: 992px) {
+    align-items: center;
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify_content_between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.heading_1 {
+  color: #064e3b;
+  font-family: Domine;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.heading_1_bold {
+  color: #064e3b;
+  font-family: Domine;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.heading_2 {
+  color: #064e3b;
+  font-family: Domine;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.heading_2_bold {
+  color: #064e3b;
+  font-family: Domine;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.heading_3 {
+  color: #064e3b;
+  font-family: Open Sans;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.heading_3_bold {
+  color: #064e3b;
+  font-family: Open Sans;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.heading_4 {
+  color: #064e3b;
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.heading_4_bold {
+  color: #064e3b;
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.btn_green {
+  padding: 12px;
+  background: var(--green_dark);
+  border-radius: 8px;
+  margin-top: 12px;
+  text-align: center;
+
+  .p_btn {
+    color: var(--white);
+    font-family: Open Sans;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 20px;
+    text-align: center;
+  }
+
+  button {
+    background-color: transparent;
+  }
+}
+
+.btn_green_sm {
+  padding: 12px !important;
+  background: var(--green_dark) !important;
+  border-radius: 8px !important;
+  margin-top: 12px !important;
+  text-align: center !important;
+  width: 100px !important;
+  height: 50px !important;
+  color: var(--white);
+  font-family: Open Sans !important;
+  font-size: 18px !important;
+  font-weight: normal !important;
+  line-height: 20px !important;
+  text-align: center !important;
+}
+
+.btn_light_green {
+  padding: 12px;
+  background: var(--green_light);
+  border-radius: 8px;
+  margin-top: 12px;
+  text-align: center;
+
+  button {
+    background-color: var(--green_light);
+  }
+
+  .p_btn {
+    color: var(--green_dark);
+    font-family: Open Sans;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 20px;
+    text-align: center;
+  }
+}
+
+.btn_light_green_sm {
+  padding: 8px 12px !important;
+  background: var(--green_light) !important;
+  border-radius: 8px !important;
+  color: var(--green_dark);
+  font-family: Open Sans !important;
+  font-size: 16px !important;
+  font-weight: normal !important;
+  line-height: 20px !important;
+  text-align: center !important;
+  border: none;
+  width: fit-content !important;
+}
+
+.btn_delete {
+  width: fit-content;
+  margin-left: auto;
+}
+
+.btn_link {
+  text-decoration: underline;
+  color: var(--green);
+}
+
+.radio_input {
+  display: flex;
+  gap: 8px;
+  color: #059669;
+  align-items: center;
+
+  input {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.card_checkbox_container {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  .card_checkbox {
+    width: fit-content;
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: 1px solid var(--green_dark);
+    color: var(--green_dark);
+    font-family: Open Sans;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+
+    &.selected {
+      color: var(--white);
+      background-color: var(--green);
+      border-color: var(--green);
+      --checkbox-cards-item-background-color: none;
+    }
+
+    button {
+      svg {
+        display: none;
+      }
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+}
+
+.txt_light_green {
+  color: #059669;
+  font-family: Open Sans;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.txt_green {
+  color: #064E3B;
+  font-family: Open Sans;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.txt_green_bold {
+  color: #064E3B;
+  font-family: Open Sans;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.bg_light_green {
+  background-color: #059669;
+}
+
+
+/* Component spefic CSS */
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 10px;
+
+  li {
+    margin: 5px;
+    padding: 8px 6px;
+    cursor: pointer;
+    border: 1px solid #aff4c6;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 8px;
+  }
+
+  .active {
+    background-color: #aff4c6;
   }
 }

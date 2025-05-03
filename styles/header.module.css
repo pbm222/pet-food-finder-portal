@@ -1,0 +1,13 @@
+.header {
+    background-color: #064E3B;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    align-items: center;
+
+    .btn_back {
+        background-color: #064E3B;
+        color: white;
+        font-weight: 700;
+    }
+}

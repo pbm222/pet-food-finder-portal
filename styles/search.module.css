@@ -1,0 +1,16 @@
+.filter {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.show_filter_link {
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.search_buttons {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+}

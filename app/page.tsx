@@ -1,95 +1,53 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import styles from "./../styles/main-page.module.css";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+        <div className={styles.img_container}>
+          <Image
+            className={styles.logo}
+            src="/main-page-pets.jpg"
+            alt="Next.js logo"
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+            priority
+          />
         </div>
+        <section className={styles.hero}>
+          <div className={styles.bg_white_transparent}>
+            <div className="heading_1_bold">Find Your Pet’s Ideal Meal</div>
+            <div className="heading_3">Search for the best options tailored to your pet's needs.</div>
+            <div className="btn_green">
+              <Link className="p_btn" href="/product/search/pet-selection">Get Started</Link>
+            </div>
+          </div>
+          <div className={styles.bg_light_blue}>
+            <div className={styles.list_text_element}>
+              <div className="heading_3_bold">Why choosing us</div>
+            </div>
+            <div className={styles.list_text_element}>
+              <div className="heading_3">Tailored Recommendations</div>
+              <div className="txt_light_green">Get pehrsonalized food suggestions based on your criteria.</div>
+            </div>
+            <div className={styles.list_text_element}>
+              <div className="heading_3">Expert Advice</div>
+              <div className="txt_light_green">Access tips and insights from pet nutrition experts.</div>
+            </div>
+            <div className={styles.list_text_element}>
+              <div className="heading_3">Community Support</div>
+              <div className="txt_light_green">Join a community of pet lovers sharing their experiences.</div>
+            </div>
+            <div className={styles.list_text_element}>
+              <div className="heading_3">Commitment to Pets</div>
+              <div className="txt_light_green">Join a community of pet lovers sharing their experiences.</div>
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }

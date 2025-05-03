@@ -1,0 +1,58 @@
+.footer {
+    padding: 32px;
+    width: 100%;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 64px;
+    background-color: #F7F6F6D6;
+    align-items: center;
+}
+
+.logo {
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    position: relative;
+    background-color: var(--green_dark);
+    border-radius: 8px;
+    padding: 2px;
+}
+
+.slogan {
+    color: #064e3b;
+    font-size: 18px;
+    font-family: Open Sans;
+    border-style: hidden;
+}
+
+.links {
+    display: flex;
+    gap: 24px;
+}
+
+.list {
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.list_heading {
+    color: #064e3b;
+    text-align: left;
+    font-size: 14px;
+    font-family: Open Sans;
+}
+
+.list_link_item {
+    color: #064e3b;
+    text-align: left;
+    font-size: 14px;
+    font-family: Open Sans;
+}
+
+.copyright {
+    text-align: center;
+}

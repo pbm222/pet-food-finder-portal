@@ -1,0 +1,36 @@
+.review_form_section {
+    margin-top: 32px;
+
+    .review_form {
+        margin-top: 36px;
+        width: 60vw;
+
+        .form {
+            flex-direction: column;
+            margin-top: 8px;
+            gap: 12px;
+            max-width: 300px;
+
+            .textarea {
+                height: 70px;
+                width: 100%;
+                border-color: #064e3b;
+                border-radius: 8px;
+                border-width: 1px;
+                padding: 8px 4px;
+                border-style: solid;
+                color: #064e3b;
+                font-family: Open Sans;
+            }
+
+            .input {
+                border-color: #064e3b;
+                border-radius: 8px;
+                border-width: 1px;
+                padding: 8px 4px;
+                border-style: solid;
+                color: #064e3b
+            }
+        }
+    }
+}
