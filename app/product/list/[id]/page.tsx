@@ -4,6 +4,8 @@ import CustomDialog from "@/components/custom-dialog";
 import CustomPagination from "@/components/custom-pagination";
 import Rating from "@/components/rating";
 import ReviewForm from "@/components/review-form";
+import { setIsLoading } from "@/redux/slices/loadingSlice";
+import { AppDispatch } from "@/redux/store";
 import { getDescriptionsForProduct } from "@/service/description";
 import { getProduct } from "@/service/product";
 import { getRetailersForProduct } from "@/service/retailer";
@@ -16,9 +18,11 @@ import { Button } from "@radix-ui/themes";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import styles from "../../../../styles/product-details.module.css";
 
 export default function ProductDetails() {
+    const dispatch = useDispatch<AppDispatch>();
     const { id } = useParams() as unknown as RouteParams;
     const [product, setProduct] = useState<Partial<Product>>({});
     const [reviews, setReviews] = useState<Review[]>([]);
@@ -32,6 +36,7 @@ export default function ProductDetails() {
     useEffect(() => {
         if (!id) return;
 
+        dispatch(setIsLoading(true));
         Promise.all([
             getProduct(id),
             getDescriptionsForProduct(id),
@@ -42,9 +47,8 @@ export default function ProductDetails() {
                 setDescriptions(descriptionsRes);
                 setRetailers(retailersRes);
             })
-            .catch(err => {
-                console.log(err);
-            });
+            .catch(err => { console.log(err) })
+            .finally(() => dispatch(setIsLoading(false)));
     }, [id]);
 
     useEffect(() => {
@@ -56,14 +60,15 @@ export default function ProductDetails() {
     };
 
     const fetchReviews = async () => {
+        dispatch(setIsLoading(true));
+
         getActiveReviewsForProduct(id, page)
             .then((reviewsRes) => {
                 setReviews(reviewsRes.content);
                 setPage({ ...page, totalElements: reviewsRes.totalElements });
             })
-            .catch(err => {
-                console.log(err);
-            });
+            .catch(err => { console.log(err); })
+            .finally(() => dispatch(setIsLoading(false)));;
     };
 
     const handleDialogOpen = (textType: string) => {
@@ -71,11 +76,25 @@ export default function ProductDetails() {
         setOpenDialog(true);
     }
 
+    const redirectToRetailer = (url: string) => {
+        const isUrlValid = typeof url === 'string' && (/^https?:\/\//.test(url) || url.startsWith('/'));
+        if (isUrlValid) {
+            window.location.href = url;
+        }
+    }
+
+    const getProductUrl = (): string => {
+        const url = product.imgUrl;
+        return (url !== undefined && typeof url === 'string' && (/^https?:\/\//.test(url) || url.startsWith('/')))
+            ? url
+            : '/pet-food-icon.svg';
+    }
+
     return (
         <section>
             <Image
                 className={styles.product_img}
-                src={product?.imgUrl || ''}
+                src={getProductUrl()}
                 height={250}
                 width={350}
                 alt="Product image"
@@ -95,7 +114,7 @@ export default function ProductDetails() {
 
                 <div className={styles.retailers_list}>
                     {retailers.map(retailer => (
-                        <div className={styles.retailer}>
+                        <div className={styles.retailer} onClick={() => redirectToRetailer(retailer.url)}>
                             <div className={styles.product_description_section}>
                                 <div>
                                     <p className="heading_3_bold">{retailer.name}</p>

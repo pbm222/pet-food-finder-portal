@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import styles from "../../../styles/product-list.module.css";
 import { clearSearch } from "@/redux/slices/searchSlice";
+import { setIsLoading } from "@/redux/slices/loadingSlice";
 
 export default function ProductList() {
     const dispatch = useDispatch<AppDispatch>();
@@ -36,21 +37,27 @@ export default function ProductList() {
     }, [page.page])
 
     const fetchProducts = () => {
+        dispatch(setIsLoading(true));
+
         getAllProducts(page)
             .then((response) => {
                 setProducts(response.content);
                 setPage({ ...page, totalElements: response.totalElements });
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log(err))
+            .finally(() => dispatch(setIsLoading(false)));
     }
 
     const fetchProductsByParams = (params: any, page: Page) => {
+        dispatch(setIsLoading(true));
+
         getProductsByParams(params, page)
             .then((response) => {
                 setProducts(response.content);
                 setPage({ ...page, totalElements: response.totalElements });
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log(err))
+            .finally(() => dispatch(setIsLoading(false)));
     }
 
     const searchProduct = async (searchParams: any) => {

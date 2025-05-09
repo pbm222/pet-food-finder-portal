@@ -25,4 +25,5 @@ export interface Retailer {
     price: number;
     isAuthorized: boolean;
     productId: string;
+    url: string;
 }

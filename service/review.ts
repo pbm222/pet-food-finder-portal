@@ -4,7 +4,7 @@ import axios from "axios";
 import qs from "qs";
 
 export const createReview = async (review: Partial<Review>) => {
-    return axios.post(`http://localhost:8080/reviews`, review)
+    return axios.post(process.env.NEXT_PUBLIC_PET_FOOD_FINDER_API_URL + `/reviews`, review)
         .then((response) => {
             return response.status;
         })
@@ -12,7 +12,7 @@ export const createReview = async (review: Partial<Review>) => {
 }
 
 export const getAllReviews = async (page: Page) => {
-    return axios.get(`http://localhost:8080/reviews`, { params: { page: page.page, size: page.size } })
+    return axios.get(process.env.NEXT_PUBLIC_PET_FOOD_FINDER_API_URL + `/reviews`, { params: { page: page.page, size: page.size } })
         .then((response) => {
             return response.data;
         })
@@ -20,7 +20,7 @@ export const getAllReviews = async (page: Page) => {
 }
 
 export const getReview = async (id: any) => {
-    return axios.get(`http://localhost:8080/reviews/${id}`)
+    return axios.get(process.env.NEXT_PUBLIC_PET_FOOD_FINDER_API_URL + `/reviews/${id}`)
         .then((response) => {
             return response.data;
         })
@@ -28,7 +28,7 @@ export const getReview = async (id: any) => {
 }
 
 export const getActiveReviewsForProduct = async (productId: any, page: Page) => {
-    return axios.get(`http://localhost:8080/reviews`, { params: { productId: productId, isActive: true, page: page.page, size: page.size } })
+    return axios.get(process.env.NEXT_PUBLIC_PET_FOOD_FINDER_API_URL + `/reviews`, { params: { productId: productId, isActive: true, page: page.page, size: page.size } })
         .then((response) => {
             return response.data;
         })

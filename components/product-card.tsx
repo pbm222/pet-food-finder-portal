@@ -32,14 +32,14 @@ export default function ProductCard({ product }: { product: Product }) {
                     <div className={styles.price_rating_section}>
                         <div className={styles.product_rating}>
                             <p className="txt_green_bold">{product.rating}</p>
-                            <Image
+                            {product.rating && <Image
                                 src="/star.png"
                                 alt="Star icon"
                                 width={20}
                                 height={20}
                                 objectPosition="center"
                                 priority
-                            />
+                            />}
                         </div>
                         <div className="txt_green_bold">{product.price}€</div>
                     </div>

@@ -6,16 +6,24 @@ import { useEffect, useState } from "react";
 import { UserData } from "@/types/userData";
 import { getAllUsers } from "@/service/user";
 import { JOB_TITLES } from "@/types/jobTitleName";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/redux/store";
+import { setIsLoading } from "@/redux/slices/loadingSlice";
 
 export default function AboutUs() {
+    const dispatch = useDispatch<AppDispatch>();
     const [groupedEmployees, setGroupedEmployees] = useState<Record<string, UserData[]>>({});
 
     useEffect(() => {
+        dispatch(setIsLoading(true));
+
         getAllUsers()
             .then((response) => {
                 const employees = groupByJobTitle(response.content);
                 setGroupedEmployees(employees);
-            });
+            })
+            .catch(err => console.log(err))
+            .finally(() => dispatch(setIsLoading(false)));
     }, []);
 
     const groupByJobTitle = (employees: UserData[]): Record<string, UserData[]> => {
@@ -99,7 +107,7 @@ export default function AboutUs() {
                                     <div className="heading_4">{JOB_TITLES[jobTitle]}s</div>
                                     <div className={styles.employee_list}>
                                         {group.map((emp: any) => (
-                                            <div className="txt_light_green">{emp.name} {emp.surname}</div>
+                                            <div className="txt_light_green" key={emp.name}>{emp.name} {emp.surname}</div>
                                         ))}
                                     </div>
                                 </div>

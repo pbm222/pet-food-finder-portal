@@ -3,7 +3,7 @@ import axios from "axios";
 import qs from "qs";
 
 export const getProduct = async (id: any) => {
-    return axios.get(`http://localhost:8080/products/${id}`)
+    return axios.get(process.env.NEXT_PUBLIC_PET_FOOD_FINDER_API_URL + `/products/${id}`)
         .then((response) => {
             return response.data;
         })
@@ -11,7 +11,7 @@ export const getProduct = async (id: any) => {
 }
 
 export const getAllProducts = async (page: Page) => {
-    return axios.get(`http://localhost:8080/products`, { params: page })
+    return axios.get(process.env.NEXT_PUBLIC_PET_FOOD_FINDER_API_URL + `/products`, { params: page })
         .then((response) => {
             return response.data;
         })
@@ -19,7 +19,7 @@ export const getAllProducts = async (page: Page) => {
 }
 
 export const getProductsByParams = async (searchFilter: any, page: Page) => {
-    return axios.get(`http://localhost:8080/products`,
+    return axios.get(process.env.NEXT_PUBLIC_PET_FOOD_FINDER_API_URL + `/products`,
         { params: { ...searchFilter, page: page.page, size: page.size }, paramsSerializer: (params) => qs.stringify(params, { arrayFormat: 'comma' }) })
         .then((response) => {
             return response.data;
