@@ -1,7 +1,7 @@
-import styles from "./../styles/footer.module.css";
-import Image from "next/image";
 import logoImg from "@/public/logo.svg";
+import Image from "next/image";
 import Link from "next/link";
+import styles from "./../styles/footer.module.css";
 
 export default function Footer() {
 
@@ -14,7 +14,7 @@ export default function Footer() {
         alt="Pet food finder logo"
       />
 
-      <div className={styles.slogan}>Your Pet's Nutrition Partner</div>
+      <div className={styles.slogan}>Your Pet s Nutrition Partner</div>
 
       <div className={styles.links}>
         <div className={styles.list}>

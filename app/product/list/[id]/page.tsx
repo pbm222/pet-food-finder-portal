@@ -114,7 +114,7 @@ export default function ProductDetails() {
 
                 <div className={styles.retailers_list}>
                     {retailers.map(retailer => (
-                        <div className={styles.retailer} onClick={() => redirectToRetailer(retailer.url)}>
+                        <div className={styles.retailer} onClick={() => redirectToRetailer(retailer.url)} key={retailer.id}>
                             <div className={styles.product_description_section}>
                                 <div>
                                     <p className="heading_3_bold">{retailer.name}</p>
@@ -136,7 +136,7 @@ export default function ProductDetails() {
 
                 <div className={styles.product_description_list}>
                     {descriptions.map(description => (
-                        <div className={styles.description}>
+                        <div className={styles.description} key={description.id}>
                             <div className="heading_3">{description.title}</div>
                             <div className="txt_light_green">{description.text}
                             </div>
@@ -150,7 +150,7 @@ export default function ProductDetails() {
 
                 <div className={styles.reviews_list}>
                     {reviews.map(review => (
-                        <div className={styles.review_card}>
+                        <div className={styles.review_card} key={review.id}>
                             <div className="heading_4_bold">{review.title}</div>
                             <Rating rating={review.rating} />
                             <p>{new Date(review.date).toLocaleDateString()}</p>
