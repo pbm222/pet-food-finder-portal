@@ -3,6 +3,8 @@
 import CustomPagination from "@/components/custom-pagination";
 import ProductCard from "@/components/product-card";
 import CustomSearch from "@/components/search";
+import { setIsLoading } from "@/redux/slices/loadingSlice";
+import { clearSearch } from "@/redux/slices/searchSlice";
 import { AppDispatch, RootState } from "@/redux/store";
 import { getAllProducts, getProductsByParams } from "@/service/product";
 import { Page } from "@/types/page";
@@ -10,8 +12,6 @@ import { Product } from "@/types/product";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import styles from "../../../styles/product-list.module.css";
-import { clearSearch } from "@/redux/slices/searchSlice";
-import { setIsLoading } from "@/redux/slices/loadingSlice";
 
 export default function ProductList() {
     const dispatch = useDispatch<AppDispatch>();
@@ -84,7 +84,7 @@ export default function ProductList() {
 
             <div className={styles.product_list}>
                 {products.map(product => (
-                    <ProductCard product={product}></ProductCard>
+                    <ProductCard key={product.id} product={product}></ProductCard>
                 ))}
             </div>
 

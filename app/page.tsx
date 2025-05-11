@@ -1,6 +1,6 @@
 import Image from "next/image";
-import styles from "./../styles/main-page.module.css";
 import Link from "next/link";
+import styles from "./../styles/main-page.module.css";
 
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
         <section className={styles.hero}>
           <div className={styles.bg_white_transparent}>
             <div className="heading_1_bold">Find Your Pet’s Ideal Meal</div>
-            <div className="heading_3">Search for the best options tailored to your pet's needs.</div>
+            <div className="heading_3">Search for the best options tailored to your pet needs.</div>
             <div className="btn_green">
               <Link className="p_btn" href="/product/search/pet-selection">Get Started</Link>
             </div>

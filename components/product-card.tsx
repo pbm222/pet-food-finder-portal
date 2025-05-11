@@ -1,9 +1,9 @@
-import { Box, Card, Flex } from "@radix-ui/themes";
-import Image from "next/image";
-import styles from "../styles/product-card.module.css";
-import { useRouter } from "next/navigation";
-import { Product } from "@/types/product";
 import { PET_TYPE_NAME } from "@/types/petTypeName";
+import { Product } from "@/types/product";
+import { Box, Card } from "@radix-ui/themes";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import styles from "../styles/product-card.module.css";
 
 export default function ProductCard({ product }: { product: Product }) {
     const router = useRouter();
