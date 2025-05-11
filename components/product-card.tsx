@@ -16,13 +16,11 @@ export default function ProductCard({ product }: { product: Product }) {
         <Card size="3" key={product.id} className={styles.product_card}
             onClick={() => router.push(`/product/list/${product.id}`)}>
             <div>
-                <Image
+                <img
                     src={isValidUrl(product.imgUrl) ? product.imgUrl : '/pet-food-icon.svg'}
                     alt="Product icon"
                     width={100}
                     height={100}
-                    objectPosition="center"
-                    priority
                 />
                 <Box className={styles.product_description_section}>
                     <p className="heading_4_bold">{product.title}</p>

@@ -92,7 +92,7 @@ export default function ProductDetails() {
 
     return (
         <section>
-            <Image
+            <img
                 className={styles.product_img}
                 src={getProductUrl()}
                 height={250}
